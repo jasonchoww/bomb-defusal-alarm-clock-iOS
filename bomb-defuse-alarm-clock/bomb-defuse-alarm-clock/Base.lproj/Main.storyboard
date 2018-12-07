@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Bomb Defuse-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="bomb_defuse_alarm_clock" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,16 +52,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Bomb Defuse" image="first" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
-        <!--Second-->
+        <!--Alarm-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="bomb_defuse_alarm_clock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="hi" title="Alarm" id="8rJ-Kc-sve" customClass="SecondViewController" customModule="bomb_defuse_alarm_clock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,6 +85,30 @@
                                     <!--2018-12-06 01:38:36 +0000-->
                                 </date>
                             </datePicker>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="khc-ax-QZV">
+                                <rect key="frame" x="223" y="400" width="51" height="31"/>
+                                <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="alarmSwitch1:" destination="8rJ-Kc-sve" eventType="valueChanged" id="gGm-bv-kqc"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c2f-UF-QTo">
+                                <rect key="frame" x="225" y="475" width="51" height="31"/>
+                                <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="alarmSwitch2:" destination="8rJ-Kc-sve" eventType="valueChanged" id="fI9-Dm-zaH"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agh-ru-AOr">
+                                <rect key="frame" x="287" y="475" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Remove"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaH-Ig-7yB">
+                                <rect key="frame" x="287" y="400" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Remove"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -94,20 +118,28 @@
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="u3w-ev-gmC" secondAttribute="trailing" constant="141" id="6B7-3x-rkq"/>
                             <constraint firstItem="rnw-lQ-SzL" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="27" id="A2o-QF-a96"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="rnw-lQ-SzL" secondAttribute="trailing" constant="28" id="PZk-7Z-2U0"/>
+                            <constraint firstItem="khc-ax-QZV" firstAttribute="top" secondItem="vqW-BN-m1a" secondAttribute="bottom" constant="31" id="Q1I-Cz-EmA"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="c2f-UF-QTo" secondAttribute="trailing" constant="101" id="YvC-Cw-uHz"/>
                             <constraint firstItem="u3w-ev-gmC" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="50" id="dkM-NW-krR"/>
                             <constraint firstItem="vqW-BN-m1a" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="142" id="o2X-lF-l5F"/>
                             <constraint firstItem="vqW-BN-m1a" firstAttribute="top" secondItem="rnw-lQ-SzL" secondAttribute="bottom" constant="8" id="tlz-9a-3uh"/>
+                            <constraint firstItem="c2f-UF-QTo" firstAttribute="top" secondItem="khc-ax-QZV" secondAttribute="bottom" constant="44" id="vgh-Ql-l0c"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="khc-ax-QZV" secondAttribute="trailing" constant="103" id="xDc-Kj-jnn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Alarm" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="alarmTime" destination="rnw-lQ-SzL" id="wV5-mt-wUL"/>
+                        <outlet property="removeLabel1" destination="WaH-Ig-7yB" id="OfK-Fi-lkc"/>
+                        <outlet property="removeLabel2" destination="agh-ru-AOr" id="2Dx-2J-v9a"/>
+                        <outlet property="switch1" destination="khc-ax-QZV" id="raf-IJ-w3k"/>
+                        <outlet property="switch2" destination="c2f-UF-QTo" id="Byh-Yp-2kA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

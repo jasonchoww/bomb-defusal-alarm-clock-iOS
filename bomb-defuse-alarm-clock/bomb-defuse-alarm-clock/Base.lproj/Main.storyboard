@@ -102,10 +102,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agh-ru-AOr">
                                 <rect key="frame" x="287" y="475" width="55" height="30"/>
                                 <state key="normal" title="Remove"/>
+                                <connections>
+                                    <action selector="removeAlarm2:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="SWe-lZ-12C"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaH-Ig-7yB">
                                 <rect key="frame" x="287" y="400" width="55" height="30"/>
                                 <state key="normal" title="Remove"/>
+                                <connections>
+                                    <action selector="removeAlarm1:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="IDj-LQ-pro"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

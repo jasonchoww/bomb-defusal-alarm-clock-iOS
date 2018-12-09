@@ -112,6 +112,8 @@ class SecondViewController: UIViewController {
             switch2.isOn = true
             
         }else{
+            //creates alert for maximum amount of alarms (2)
+            createAlert(title: "Maximum amount of alarms reached", message: "Please remove an alarm to add a new alarm")
             print("Maximum amount of alarms already set")
         }
         
@@ -190,6 +192,8 @@ class SecondViewController: UIViewController {
         
         saveState()
         loadState()
+        
+        print("removed alarm1")
     }
     
     @IBAction func removeAlarm2(_ sender: Any) {
@@ -204,8 +208,18 @@ class SecondViewController: UIViewController {
         
         saveState()
         loadState()
+        
+        print("removed alarm2")
     }
     
+    //alert function
+    func createAlert(title:String, message:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title:"Okay", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
     
     //EVERYTHING BELOW IS STATES FOR SAVED DATA

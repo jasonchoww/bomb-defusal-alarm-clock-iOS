@@ -22,7 +22,7 @@ func convertTime(setTimeInput: String) -> String{
     
     let date = formatter.date(from: setTimeString)
     let adjustedTime = formatterPrint.string(from: (date!))
-    print(adjustedTime)
+    print("alarm created, time: " + adjustedTime)
     return adjustedTime
     
 }

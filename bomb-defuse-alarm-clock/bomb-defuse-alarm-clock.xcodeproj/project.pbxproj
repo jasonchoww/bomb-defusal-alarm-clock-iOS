@@ -16,6 +16,9 @@
 		351B80C021B8B1A8001EAFA2 /* bomb_defuse_alarm_clockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B80BF21B8B1A8001EAFA2 /* bomb_defuse_alarm_clockTests.swift */; };
 		351B80CB21B8B1A8001EAFA2 /* bomb_defuse_alarm_clockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B80CA21B8B1A8001EAFA2 /* bomb_defuse_alarm_clockUITests.swift */; };
 		351B80D921B8B812001EAFA2 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B80D821B8B812001EAFA2 /* AlarmModel.swift */; };
+		351B80DD21BF32F7001EAFA2 /* alarm-sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 351B80DC21BF32F7001EAFA2 /* alarm-sound.wav */; };
+		351B80E021BF3337001EAFA2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351B80DF21BF3337001EAFA2 /* AVFoundation.framework */; };
+		351B80E221BF360B001EAFA2 /* Sound Folder in Resources */ = {isa = PBXBuildFile; fileRef = 351B80E121BF360B001EAFA2 /* Sound Folder */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		351B80CA21B8B1A8001EAFA2 /* bomb_defuse_alarm_clockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bomb_defuse_alarm_clockUITests.swift; sourceTree = "<group>"; };
 		351B80CC21B8B1A8001EAFA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		351B80D821B8B812001EAFA2 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
+		351B80DC21BF32F7001EAFA2 /* alarm-sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "alarm-sound.wav"; path = "../../../../../Google Drive/MISC/alarm-sound.wav"; sourceTree = "<group>"; };
+		351B80DF21BF3337001EAFA2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		351B80E121BF360B001EAFA2 /* Sound Folder */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sound Folder"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				351B80E021BF3337001EAFA2 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +92,7 @@
 				351B80BE21B8B1A8001EAFA2 /* bomb-defuse-alarm-clockTests */,
 				351B80C921B8B1A8001EAFA2 /* bomb-defuse-alarm-clockUITests */,
 				351B80A621B8B1A8001EAFA2 /* Products */,
+				351B80DE21BF3336001EAFA2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +109,8 @@
 		351B80A721B8B1A8001EAFA2 /* bomb-defuse-alarm-clock */ = {
 			isa = PBXGroup;
 			children = (
+				351B80DC21BF32F7001EAFA2 /* alarm-sound.wav */,
+				351B80E121BF360B001EAFA2 /* Sound Folder */,
 				351B80A821B8B1A8001EAFA2 /* AppDelegate.swift */,
 				351B80AA21B8B1A8001EAFA2 /* FirstViewController.swift */,
 				351B80AC21B8B1A8001EAFA2 /* SecondViewController.swift */,
@@ -129,6 +139,14 @@
 				351B80CC21B8B1A8001EAFA2 /* Info.plist */,
 			);
 			path = "bomb-defuse-alarm-clockUITests";
+			sourceTree = "<group>";
+		};
+		351B80DE21BF3336001EAFA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				351B80DF21BF3337001EAFA2 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +255,8 @@
 			files = (
 				351B80B521B8B1A8001EAFA2 /* LaunchScreen.storyboard in Resources */,
 				351B80B221B8B1A8001EAFA2 /* Assets.xcassets in Resources */,
+				351B80DD21BF32F7001EAFA2 /* alarm-sound.wav in Resources */,
+				351B80E221BF360B001EAFA2 /* Sound Folder in Resources */,
 				351B80B021B8B1A8001EAFA2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +461,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X682GR5BND;
 				INFOPLIST_FILE = "bomb-defuse-alarm-clock/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -458,6 +479,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X682GR5BND;
 				INFOPLIST_FILE = "bomb-defuse-alarm-clock/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

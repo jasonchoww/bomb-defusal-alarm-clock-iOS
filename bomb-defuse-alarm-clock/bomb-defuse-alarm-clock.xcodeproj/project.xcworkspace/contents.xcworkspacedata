@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:bomb-defuse-alarm-clock.xcodeproj">
+      location = "group:../../../../../Google Drive/MISC/alarm-sound.wav">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

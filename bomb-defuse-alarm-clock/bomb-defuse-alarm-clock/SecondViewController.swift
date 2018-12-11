@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import UserNotifications
+
 
 class SecondViewController: UIViewController {
     
@@ -16,6 +18,23 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // request for allowing notifcations (alarm request)
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in
+        })
+        
+        //uncomment resetState() to reset all saved data, recomment to run app in normal state
+        //resetState()
+        loadStartState()
+        
+        if startApp == false{
+            saveState()
+        }
+        
+        loadState()
+        
+        //one alarm, sets alarm 2 settings to false
+        oneAlarm()
         
         //Removes initial labels if they do not exist at start up
         if alarm1Active == false{
@@ -27,14 +46,17 @@ class SecondViewController: UIViewController {
             removeLabel2.isHidden = true
         }
         
-        //uncomment resetState() to reset all saved data, recomment to run app in normal state
-        //resetState()
-        loadState()
-        if startApp == false{
-            saveState()
+        if alarm1Showing == false{
+            alarmLabel1.isHidden = true
         }
         
+        if alarm2Showing == false{
+            alarmLabel2.isHidden = true
+        }
+    
+        
     }
+    
     
     //if the app is the first time running it will not load any states which causes nil error
     var startApp = false
@@ -52,12 +74,16 @@ class SecondViewController: UIViewController {
     var alarm2Showing = false
     
     //Alarm labels, adjustedTime: formatted time after receiving from UI
-    var alarmLabel1 = UILabel()
-    var alarmLabel2 = UILabel()
+    @IBOutlet weak var alarmLabel1: UILabel!
+    @IBOutlet weak var alarmLabel2: UILabel!
+    
     var alarmLabel1String = ""
     var alarmLabel2String = ""
     var adjustedTime1 = ""
     var adjustedTime2 = ""
+    
+    //Uneditted Alarm Time for setting alert
+    var alertTime1 = ""
     
     //Button to remove alarm labels
     @IBOutlet weak var removeLabel1: UIButton!
@@ -76,15 +102,18 @@ class SecondViewController: UIViewController {
         if alarm1Active == false {
             //calls function to parse time format for alarm time
             //adjustedTime is in the format hh:mm a
-            adjustedTime1 = convertTime(setTimeInput: alarmTime.date.description)
+            adjustedTime1 = convertTimeLabel(setTimeInput: alarmTime.date.description)
+            
+            alertTime1 = alarmTime.date.description
+            convertTimeAlarm(setTimeInput: alarmTime.date.description)
             
             //creates label with alarm
-            createAlarmLabel1()
             alarmLabel1.text = adjustedTime1
             alarmLabel1String = adjustedTime1
             
-            self.view.addSubview(alarmLabel1)
+            //self.view.addSubview(alarmLabel1)
             removeLabel1.isHidden = false
+            alarmLabel1.isHidden = false
             
             //sets booleans to true to reflect active alarm settings
             alarm1Active = true
@@ -93,23 +122,32 @@ class SecondViewController: UIViewController {
             switch1.isOn = true
             
         } else if alarm2Active == false{
+            
+            /*COMMENTED OUT FOR A SINGLE ALARM
+            
             //calls function to parse time format for alarm time
             //adjustedTime is in the format hh:mm a
-            adjustedTime2 = convertTime(setTimeInput: alarmTime.date.description)
+            adjustedTime2 = convertTimeLabel(setTimeInput: alarmTime.date.description)
+            
+            convertTimeAlarm(setTimeInput: alarmTime.date.description)
             
             //creates label with alarm
-            createAlarmLabel2()
             alarmLabel2.text = adjustedTime2
             alarmLabel2String = adjustedTime2
             
-            self.view.addSubview(alarmLabel2)
+            //self.view.addSubview(alarmLabel2)
             removeLabel2.isHidden = false
+            alarmLabel2.isHidden = false
             
             //sets booleans to true to reflect active alarm settings
             alarm2Active = true
             alarm2ActiveRing = true
             alarm2Showing = true
             switch2.isOn = true
+            
+            */
+            createAlert(title: "Maximum amount of alarms reached", message: "Please remove an alarm to add a new alarm")
+            print("Maximum amount of alarms already set")
             
         }else{
             //creates alert for maximum amount of alarms (2)
@@ -124,22 +162,27 @@ class SecondViewController: UIViewController {
     @IBAction func alarmSwitch1(_ sender: Any) {
         if alarm1Active == true{
             if alarm1Showing == true{
-                alarmLabel1.removeFromSuperview()
+                alarmLabel1.isHidden = true
                 alarm1ActiveRing = false
                 alarm1Showing = false
+                
+                clearNotifcations()
                 print("alarm 1 is deactive but still exists")
             }else{
-                createAlarmLabel1()
                 alarmLabel1.text = alarmLabel1String
-                self.view.addSubview(alarmLabel1)
+                alarmLabel1.isHidden = false
                 alarm1ActiveRing = true
                 alarm1Showing = true
+                
+                convertTimeAlarm(setTimeInput: alertTime1)
                 print("alarm 1 is active")
             }
         }else{
             alarm1Active = false
             alarm1ActiveRing = false
             switch1.isOn = false
+            
+            clearNotifcations()
             print("alarm 1 has not been created")
         }
         saveState()
@@ -149,14 +192,13 @@ class SecondViewController: UIViewController {
     @IBAction func alarmSwitch2(_ sender: Any) {
         if alarm2Active == true{
             if alarm2Showing == true{
-                alarmLabel2.removeFromSuperview()
+                alarmLabel2.isHidden = true
                 alarm2ActiveRing = false
                 alarm2Showing = false
                 print("alarm 2 is deactive but still exists")
             }else{
-                createAlarmLabel2()
                 alarmLabel2.text = alarmLabel2String
-                self.view.addSubview(alarmLabel2)
+                alarmLabel2.isHidden = false
                 alarm2Showing = true
                 alarm2ActiveRing = true
                 print("alarm 2 is active")
@@ -170,16 +212,6 @@ class SecondViewController: UIViewController {
         saveState()
     }
     
-    //creates alarm labels when the alarm is created
-    func createAlarmLabel1(){
-        alarmLabel1.frame = CGRect(x: 125.0, y: 400.0, width: 300.0, height: 30.0)
-        
-    }
-    func createAlarmLabel2(){
-        alarmLabel2.frame = CGRect(x: 125.0, y: 475.0, width: 300.0, height: 30.0)
-    }
-    
-    
     @IBAction func removeAlarm1(_ sender: Any) {
         alarm1ActiveRing = false
         alarm1Active = false
@@ -190,6 +222,7 @@ class SecondViewController: UIViewController {
         removeLabel1.isHidden = true
         switch1.isOn = false
         
+        clearNotifcations()
         saveState()
         loadState()
         
@@ -209,6 +242,7 @@ class SecondViewController: UIViewController {
         saveState()
         loadState()
         
+        
         print("removed alarm2")
     }
     
@@ -216,7 +250,7 @@ class SecondViewController: UIViewController {
     func createAlert(title:String, message:String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title:"Okay", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
+        alert.addAction(UIAlertAction(title:"Accept", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -230,25 +264,32 @@ class SecondViewController: UIViewController {
         defaults.set(startApp, forKey: "startApp")
     }
     
+    func loadStartState(){
+        let defaults = UserDefaults.standard
+        startApp = defaults.bool(forKey: "startApp")
+    }
+    
     //saves the state of app
     func saveState(){
         let defaults = UserDefaults.standard
         defaults.set(alarm1ActiveRing, forKey: "alarm1ActiveRing")
         defaults.set(alarm2ActiveRing, forKey: "alarm2ActiveRing")
+        
         defaults.set(alarm1Active, forKey: "alarm1Active")
         defaults.set(alarm2Active, forKey: "alarm2Active")
+        
         defaults.set(alarm1Showing, forKey: "alarm1Showing")
         defaults.set(alarm2Showing, forKey: "alarm2Showing")
+        
         defaults.set(alarmLabel1String, forKey: "alarmLabel1String")
         defaults.set(alarmLabel2String, forKey: "alarmLabel2String")
         
+        defaults.set(alertTime1, forKey: "alertTime1")
     }
     
     //loads the state of app
     func loadState(){
         let defaults = UserDefaults.standard
-        
-        startApp = defaults.bool(forKey: "startApp")
         
         alarm1ActiveRing = defaults.bool(forKey: "alarm1ActiveRing")
         alarm2ActiveRing = defaults.bool(forKey: "alarm2ActiveRing")
@@ -262,16 +303,19 @@ class SecondViewController: UIViewController {
         alarmLabel1String = defaults.string(forKey: "alarmLabel1String")!
         alarmLabel2String = defaults.string(forKey: "alarmLabel2String")!
         
+        alertTime1 = defaults.string(forKey: "alertTime1")!
+        
         if alarm1ActiveRing == true{
-            createAlarmLabel1()
             alarmLabel1.text = alarmLabel1String
-            self.view.addSubview(alarmLabel1)
+            alarmLabel1.isHidden = false
+            alarm1Showing = true
             switch1.isOn = true
         }
+        
         if alarm2ActiveRing == true{
-            createAlarmLabel2()
             alarmLabel2.text = alarmLabel2String
-            self.view.addSubview(alarmLabel2)
+            alarmLabel2.isHidden = false
+            alarm2Showing = true
             switch2.isOn = true
         }
         
@@ -281,27 +325,43 @@ class SecondViewController: UIViewController {
         if alarm2Active == true{
             removeLabel2.isHidden = false
         }
-        
-        
     }
     
     //resets all values and storyboard
     func resetState(){
-        alarm1ActiveRing = false
-        alarm2ActiveRing = false
-        alarm1Active = false
-        alarm2Active = false
-        alarm1Showing = false
-        alarm2Showing = false
-        startApp = false
         
+        //alarm 1 settings
+        alarm1ActiveRing = false
+        alarm1Active = false
+        alarm1Showing = false
         alarmLabel1String = ""
-        alarmLabel2String = ""
         adjustedTime1 = ""
+        alertTime1 = ""
+        
+        //alarm 2 settings
+        alarm2ActiveRing = false
+        alarm2Active = false
+        alarm2Showing = false
+        alarmLabel2String = ""
         adjustedTime2 = ""
         
+        startApp = false
+        
+        oneAlarm()
+        clearNotifcations()
         saveState()
         loadState()
+        
+        print("All states have been reset")
+    }
+    
+    //use this function in all codes that modify second alarm to shut down alarm 2 completely, shutting down alarm 2 completely due to notification being allowed to have one set at a time
+    func oneAlarm(){
+        alarm2Active = false
+        alarm2Showing = false
+        alarmLabel2.isHidden = true
+        removeLabel2.isHidden = true
+        switch2.isHidden = true
     }
     
     

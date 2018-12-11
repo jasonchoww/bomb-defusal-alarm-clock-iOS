@@ -129,7 +129,6 @@ class SecondViewController: UIViewController {
             alarmLabel1.text = adjustedTime1
             alarmLabel1String = adjustedTime1
             
-            //self.view.addSubview(alarmLabel1)
             removeLabel1.isHidden = false
             alarmLabel1.isHidden = false
             

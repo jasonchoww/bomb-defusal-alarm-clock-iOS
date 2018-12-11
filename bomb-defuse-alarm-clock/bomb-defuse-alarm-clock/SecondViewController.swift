@@ -26,11 +26,9 @@ class SecondViewController: UIViewController {
         //uncomment resetState() to reset all saved data, recomment to run app in normal state
         //resetState()
         loadStartState()
-        
         if startApp == false{
             saveState()
         }
-        
         loadState()
         
         //one alarm, sets alarm 2 settings to false
@@ -56,6 +54,26 @@ class SecondViewController: UIViewController {
     
         
     }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        /*
+        let DestViewController: FirstViewController = segue.destination as! FirstViewController
+        */
+        
+        let DestViewController: FirstViewController = segue.destination as! FirstViewController
+        DestViewController.countdownTimeString = convertTimeForCountdown(setTimeInput: alertTime1)
+        
+        DestViewController.startCountdown(self)
+        
+        
+        
+    }
+    
+
+    
     
     
     //if the app is the first time running it will not load any states which causes nil error
@@ -120,6 +138,8 @@ class SecondViewController: UIViewController {
             alarm1ActiveRing = true
             alarm1Showing = true
             switch1.isOn = true
+            
+            //performSegue(withIdentifier: "segue", sender: self)
             
         } else if alarm2Active == false{
             

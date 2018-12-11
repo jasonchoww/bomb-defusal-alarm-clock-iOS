@@ -10,6 +10,19 @@ import Foundation
 import UserNotifications
 import AVFoundation
 
+
+struct Time{
+    var time: String
+}
+
+
+func sendTimeToBomb(setTimeInput: String){
+    let countdown = Time(time: setTimeInput)
+    
+    
+}
+
+
 //Converts time from UIDatePicker to hh:mm format
 func convertTimeLabel(setTimeInput: String) -> String{
     
@@ -25,7 +38,20 @@ func convertTimeLabel(setTimeInput: String) -> String{
     let adjustedTime = formatterPrint.string(from: (date!))
     print("alarm created, time: " + adjustedTime)
     return adjustedTime
+}
+
+func convertTimeForCountdown(setTimeInput: String) -> String{
+    let setTimeString = setTimeInput
     
+    let formatter = DateFormatter()
+    let formatterPrint = DateFormatter()
+    
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+    formatterPrint.dateFormat = "HH:mm:ss"
+
+    let date = formatter.date(from: setTimeString)
+    let adjustedTime = formatterPrint.string(from: (date!))
+    return adjustedTime
 }
 
 func convertTimeAlarm(setTimeInput: String){

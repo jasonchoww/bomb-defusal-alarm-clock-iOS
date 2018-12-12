@@ -74,6 +74,38 @@ func convertTimeAlarm(setTimeInput: String){
     alarmNotification(hour: alarmInHours, minute: alarmInMinutes)
 }
 
+func convertTimeHours(setTimeInput: String) -> String{
+    let setTimeString = setTimeInput
+    
+    let formatter = DateFormatter()
+    let formatterHour = DateFormatter()
+    
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+    formatterHour.dateFormat = "HH"
+    
+    let date = formatter.date(from: setTimeString)
+    
+    let alarmInHours = formatterHour.string(from: date!)
+    
+    return alarmInHours
+}
+
+func converTimeMinutes(setTimeInput: String) -> String{
+    let setTimeString = setTimeInput
+    
+    let formatter = DateFormatter()
+    let formatterMinute = DateFormatter()
+    
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+    formatterMinute.dateFormat = "mm"
+    
+    let date = formatter.date(from: setTimeString)
+    
+    let alarmInMinutes = formatterMinute.string(from: date!)
+    
+    return alarmInMinutes
+}
+
 func alarmNotification(hour: String, minute: String){
     
     let hourInt = Int(hour)
@@ -100,6 +132,12 @@ func alarmNotification(hour: String, minute: String){
     let request = UNNotificationRequest(identifier: "Alarm", content: content, trigger: trigger)
     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 
+}
+
+func receivedNotification(center: UNUserNotificationCenter, didReceiveNotificationResponse response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void) {
+    
+    print("didReceive")
+    completionHandler()
 }
 
 func clearNotifcations(){

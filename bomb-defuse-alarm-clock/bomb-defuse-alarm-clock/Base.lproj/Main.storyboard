@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QBW-tT-NKU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,20 +19,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="TIME" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
-                                <rect key="frame" x="112" y="121" width="150.5" height="43"/>
+                                <rect key="frame" x="112" y="165" width="150.5" height="43"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Until Next Bomb Defuse" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
-                                <rect key="frame" x="90" y="188" width="194.5" height="17"/>
+                                <rect key="frame" x="90" y="232" width="194.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countdown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL3-pt-KSd">
-                                <rect key="frame" x="142" y="66" width="95" height="21"/>
+                                <rect key="frame" x="142" y="110" width="95" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="95" id="Dl0-d4-Qev"/>
                                 </constraints>
@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SS-sM-Yld">
-                                <rect key="frame" x="170" y="526" width="34" height="30"/>
+                                <rect key="frame" x="170" y="575" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="startCountdown:" destination="9pv-A4-QxB" eventType="touchUpInside" id="0eH-i2-owT"/>
@@ -74,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748" y="-321.58920539730138"/>
+            <point key="canvasLocation" x="1190" y="-215"/>
         </scene>
         <!--Alarm-->
         <scene sceneID="wg7-f3-ORb">
@@ -85,49 +85,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqW-BN-m1a">
-                                <rect key="frame" x="142" y="327" width="90" height="30"/>
+                                <rect key="frame" x="142" y="376" width="90" height="30"/>
                                 <state key="normal" title="Create Alarm"/>
                                 <connections>
                                     <action selector="CreateAlarm:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="oc6-po-9hH"/>
-                                    <segue destination="9pv-A4-QxB" kind="show" id="u83-24-mP2"/>
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rnw-lQ-SzL">
-                                <rect key="frame" x="27" y="103" width="320" height="216"/>
+                                <rect key="frame" x="27" y="147" width="320" height="221"/>
                                 <date key="date" timeIntervalSinceReferenceDate="565753116.58737099">
                                     <!--2018-12-06 01:38:36 +0000-->
                                 </date>
                             </datePicker>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="khc-ax-QZV">
-                                <rect key="frame" x="223" y="388" width="51" height="31"/>
+                                <rect key="frame" x="223" y="437" width="51" height="31"/>
                                 <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="alarmSwitch1:" destination="8rJ-Kc-sve" eventType="valueChanged" id="gGm-bv-kqc"/>
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c2f-UF-QTo">
-                                <rect key="frame" x="225" y="463" width="51" height="31"/>
+                                <rect key="frame" x="225" y="512" width="51" height="31"/>
                                 <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="alarmSwitch2:" destination="8rJ-Kc-sve" eventType="valueChanged" id="fI9-Dm-zaH"/>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaH-Ig-7yB">
-                                <rect key="frame" x="287" y="388" width="55" height="30"/>
+                                <rect key="frame" x="287" y="437" width="55" height="30"/>
                                 <state key="normal" title="Remove"/>
                                 <connections>
                                     <action selector="removeAlarm1:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="IDj-LQ-pro"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agh-ru-AOr">
-                                <rect key="frame" x="287" y="463" width="55" height="30"/>
+                                <rect key="frame" x="287" y="512" width="55" height="30"/>
                                 <state key="normal" title="Remove"/>
                                 <connections>
                                     <action selector="removeAlarm2:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="SWe-lZ-12C"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm Clock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfe-nL-Qxn">
-                                <rect key="frame" x="138" y="66" width="99" height="21"/>
+                                <rect key="frame" x="138" y="110" width="99" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="99" id="gmt-k7-iyn"/>
                                 </constraints>
@@ -136,7 +135,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9s-RF-HZ0">
-                                <rect key="frame" x="133" y="392" width="82" height="21"/>
+                                <rect key="frame" x="133" y="441" width="82" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="82" id="4eq-za-bny"/>
                                     <constraint firstAttribute="height" constant="21" id="KLG-vi-he5"/>
@@ -146,7 +145,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0d-sP-MWg">
-                                <rect key="frame" x="133" y="468" width="82" height="21"/>
+                                <rect key="frame" x="133" y="517" width="82" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Ce2-Mm-LuA"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="82" id="jaJ-83-evR"/>
@@ -155,6 +154,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmd-95-6de">
+                                <rect key="frame" x="141" y="577" width="93" height="30"/>
+                                <state key="normal" title="Defuse Bomb"/>
+                                <connections>
+                                    <segue destination="9pv-A4-QxB" kind="show" id="89O-eu-j3U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -170,14 +176,17 @@
                             <constraint firstItem="u0d-sP-MWg" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="133" id="OA5-2J-5Ne"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="rnw-lQ-SzL" secondAttribute="trailing" constant="28" id="PZk-7Z-2U0"/>
                             <constraint firstItem="khc-ax-QZV" firstAttribute="top" secondItem="vqW-BN-m1a" secondAttribute="bottom" constant="31" id="Q1I-Cz-EmA"/>
+                            <constraint firstItem="xmd-95-6de" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="141" id="QUI-sL-adL"/>
                             <constraint firstItem="b9s-RF-HZ0" firstAttribute="top" secondItem="vqW-BN-m1a" secondAttribute="bottom" constant="35" id="UCx-Jr-dUq"/>
                             <constraint firstItem="wfe-nL-Qxn" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="138" id="VME-oR-zkh"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="agh-ru-AOr" secondAttribute="trailing" constant="33" id="YEQ-No-gil"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="c2f-UF-QTo" secondAttribute="trailing" constant="101" id="YvC-Cw-uHz"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="xmd-95-6de" secondAttribute="bottom" constant="60" id="daf-Fp-pTH"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="WaH-Ig-7yB" secondAttribute="trailing" constant="33" id="f5i-Tu-Urd"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="u0d-sP-MWg" secondAttribute="bottom" constant="129" id="fvT-g4-G1l"/>
                             <constraint firstItem="vqW-BN-m1a" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="142" id="o2X-lF-l5F"/>
                             <constraint firstItem="wfe-nL-Qxn" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="46" id="oCm-Ld-Clq"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="xmd-95-6de" secondAttribute="trailing" constant="141" id="pE8-4M-ZiF"/>
                             <constraint firstItem="WaH-Ig-7yB" firstAttribute="leading" secondItem="khc-ax-QZV" secondAttribute="trailing" constant="15" id="tXa-q5-Zjq"/>
                             <constraint firstItem="vqW-BN-m1a" firstAttribute="top" secondItem="rnw-lQ-SzL" secondAttribute="bottom" constant="8" id="tlz-9a-3uh"/>
                             <constraint firstItem="rnw-lQ-SzL" firstAttribute="top" secondItem="wfe-nL-Qxn" secondAttribute="bottom" constant="16" id="vWA-bA-JyL"/>
@@ -189,6 +198,7 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Alarm" image="second" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" id="M5B-GS-tEP"/>
                     <connections>
                         <outlet property="alarmLabel1" destination="b9s-RF-HZ0" id="Cbh-qe-9QB"/>
                         <outlet property="alarmLabel2" destination="u0d-sP-MWg" id="ua9-pk-6od"/>
@@ -201,32 +211,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748" y="358.4707646176912"/>
+            <point key="canvasLocation" x="351" y="-214"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="yl2-sM-qoP">
+        <!--Navigation Controller-->
+        <scene sceneID="fVK-tp-z5n">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
-                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                    </tabBar>
+                <navigationController id="QBW-tT-NKU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3gG-xs-L02">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="z9k-fd-J4X"/>
                     </connections>
-                </tabBarController>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E0Y-Ca-qbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-468" y="-215"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="u83-24-mP2"/>
-    </inferredMetricsTieBreakers>
 </document>

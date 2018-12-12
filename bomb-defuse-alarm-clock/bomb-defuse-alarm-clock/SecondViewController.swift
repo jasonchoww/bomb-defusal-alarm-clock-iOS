@@ -59,22 +59,10 @@ class SecondViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        /*
         let DestViewController: FirstViewController = segue.destination as! FirstViewController
-        */
-        
-        let DestViewController: FirstViewController = segue.destination as! FirstViewController
-        DestViewController.countdownTimeString = convertTimeForCountdown(setTimeInput: alertTime1)
-        
         DestViewController.startCountdown(self)
-        
-        
-        
-    }
-    
 
-    
-    
+    }
     
     //if the app is the first time running it will not load any states which causes nil error
     var startApp = false

@@ -49,16 +49,13 @@ class FirstViewController: UIViewController {
         wire2.addGestureRecognizer(tapGestureRecognizer2)
         wire3.addGestureRecognizer(tapGestureRecognizer3)
         // Do any additional setup after loading the view, typically from a nib.
-        start.isHidden = true
-        countdownTime.text = countdownTimeString
+        //countdownTime.text = countdownTimeString
         
     }
     
     var countdownTimeString = String()
-    
-    @IBOutlet weak var start: UIButton!
     @IBOutlet weak var countdownTime: UILabel!
-
+    
     var seconds = 5
     var timer = Timer()
     

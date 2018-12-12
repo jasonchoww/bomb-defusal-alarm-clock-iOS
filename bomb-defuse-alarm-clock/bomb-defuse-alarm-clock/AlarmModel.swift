@@ -17,7 +17,7 @@ struct Time{
 
 
 func sendTimeToBomb(setTimeInput: String){
-    let countdown = Time(time: setTimeInput)
+    //let countdown = Time(time: setTimeInput)
     
     
 }
@@ -118,8 +118,8 @@ func alarmNotification(hour: String, minute: String){
     //default sound, don't use, use for testing
     //content.sound = UNNotificationSound.default
     
-    let sound: UNNotificationSound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: "alarm-sound.wav"))
-    content.sound = sound
+    /*let sound: UNNotificationSound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: "alarm-sound.wav"))
+    content.sound = sound*/
     
     var dateInfo = DateComponents()
     dateInfo.hour = hourInt

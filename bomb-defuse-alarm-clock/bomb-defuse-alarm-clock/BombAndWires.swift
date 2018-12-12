@@ -45,7 +45,7 @@ struct BombAndWires:Equatable {
         case 1:
             randomInt1 = 2
             self.wireColorTapOrder[1] = self.wireColorView[randomInt1]
-            self.wireColorTapOrder[2] = self.wireColorView[1]
+            self.wireColorTapOrder[2] = self.wireColorView[0]
         case 2:
             randomInt1 = Int((arc4random() % 2))
             self.wireColorTapOrder[1] = self.wireColorView[randomInt1]
@@ -61,5 +61,9 @@ struct BombAndWires:Equatable {
     
     func checkIfCorrectTapped(color: String, index: Int) -> Bool {
         return self.wireColorTapOrder[index] == color
+    }
+    
+    func checkIfWrongTapped(color: String, index: Int) -> Bool {
+        return self.wireColorTapOrder[index] != color
     }
 }

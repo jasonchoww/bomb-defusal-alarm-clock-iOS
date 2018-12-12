@@ -11,7 +11,11 @@ import UIKit
 class FirstViewController: UIViewController {
     
     var bombAndWires = BombAndWires()
+    var timer = Timer()
     var patternStep = 0;
+    var seconds = 6
+    var bombDefused = false;
+    var wrongWireCut = false;
     
     @IBOutlet weak var Color1: UILabel!
     
@@ -25,19 +29,31 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var wire3: UIImageView!
     
+    @IBOutlet weak var bomb: UIImageView!
+    
     @IBOutlet weak var GameWin: UILabel!
 
+    @IBOutlet weak var TryAgain: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         patternStep = 0;
-        GameWin.isHidden = true;
+        seconds = 6;
+        bombDefused = false;
+        GameWin.isHidden = true
+        if(!wrongWireCut) {
+            TryAgain.isHidden = true
+        } else {
+            TryAgain.isHidden = false
+        }
         Color1.text = bombAndWires.getWireColorTapOrder(index: 0)
         Color2.text = bombAndWires.getWireColorTapOrder(index: 1)
         Color3.text = bombAndWires.getWireColorTapOrder(index: 2)
         wire1.image = UIImage(named: "bluewire.png")!
         wire2.image = UIImage(named: "redwire.png")!
         wire3.image = UIImage(named: "greenwire.png")!
+        bomb.image = UIImage(named: "DynamiteWhiteTimer.png")!
         
         let tapGestureRecognizer1 = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer1:)))
         let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer2:)))
@@ -53,25 +69,31 @@ class FirstViewController: UIViewController {
         
     }
     
+    func resetAndRandomize() {
+        bombAndWires.randomize()
+        Color1.text = bombAndWires.getWireColorTapOrder(index: 0)
+        Color2.text = bombAndWires.getWireColorTapOrder(index: 1)
+        Color3.text = bombAndWires.getWireColorTapOrder(index: 2)
+        viewDidLoad()
+    }
+    
     var countdownTimeString = String()
     @IBOutlet weak var countdownTime: UILabel!
-    
-    var seconds = 5
-    var timer = Timer()
     
     @objc func counter(){
         
         seconds -= 1
         countdownTime.text = String(seconds)
         
-        if seconds == 0{
+        if seconds == 0 && !bombDefused{
+            self.resetAndRandomize()
+        } else if bombDefused {
             timer.invalidate()
         }
     }
 
     @IBAction func startCountdown(_ sender: Any) {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(FirstViewController.counter)), userInfo: nil, repeats: true)
-        
     }
 
     
@@ -79,10 +101,17 @@ class FirstViewController: UIViewController {
         let tappedImage = tapGestureRecognizer1.view as! UIImageView
         tappedImage.image = nil
         if(bombAndWires.checkIfCorrectTapped(color: "blue", index: patternStep)) {
+            wrongWireCut = false
+            TryAgain.isHidden = true
             patternStep = patternStep + 1
-        }
-        if(patternStep == 3) {
-            GameWin.isHidden = false;
+            if(patternStep == 3) {
+                GameWin.isHidden = false
+                bombDefused = true
+            }
+        } else if(bombAndWires.checkIfWrongTapped(color: "blue", index: patternStep)) {
+            wrongWireCut = true
+            TryAgain.isHidden = false
+            self.resetAndRandomize()
         }
     }
     
@@ -90,10 +119,17 @@ class FirstViewController: UIViewController {
         let tappedImage = tapGestureRecognizer2.view as! UIImageView
         tappedImage.image = nil
         if(bombAndWires.checkIfCorrectTapped(color: "red", index: patternStep)) {
+            wrongWireCut = false
+            TryAgain.isHidden = true
             patternStep = patternStep + 1
-        }
-        if(patternStep == 3) {
-            GameWin.isHidden = false;
+            if(patternStep == 3) {
+                GameWin.isHidden = false;
+                bombDefused = true;
+            }
+        } else if(bombAndWires.checkIfWrongTapped(color: "red", index: patternStep)) {
+            wrongWireCut = true
+            TryAgain.isHidden = false
+            self.resetAndRandomize()
         }
     }
     
@@ -101,19 +137,18 @@ class FirstViewController: UIViewController {
         let tappedImage = tapGestureRecognizer3.view as! UIImageView
         tappedImage.image = nil
         if(bombAndWires.checkIfCorrectTapped(color: "green", index: patternStep)) {
+            wrongWireCut = false
+            TryAgain.isHidden = true
             patternStep = patternStep + 1
+            if(patternStep == 3) {
+                GameWin.isHidden = false;
+                bombDefused = true;
+            }
+        } else if(bombAndWires.checkIfWrongTapped(color: "green", index: patternStep)) {
+            wrongWireCut = true
+            TryAgain.isHidden = false
+            self.resetAndRandomize()
         }
-        if(patternStep == 3) {
-            GameWin.isHidden = false;
-        }
-    }
-    
-    @IBAction func ColorPatternRandomizer(_ sender: UIButton) {
-        bombAndWires.randomize()
-        Color1.text = bombAndWires.getWireColorTapOrder(index: 0)
-        Color2.text = bombAndWires.getWireColorTapOrder(index: 1)
-        Color3.text = bombAndWires.getWireColorTapOrder(index: 2)
-        viewDidLoad()
     }
 }
 

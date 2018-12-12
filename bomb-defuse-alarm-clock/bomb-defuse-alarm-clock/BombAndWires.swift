@@ -58,4 +58,8 @@ struct BombAndWires:Equatable {
             randomInt1 = -1
         }
     }
+    
+    func checkIfCorrectTapped(color: String, index: Int) -> Bool {
+        return self.wireColorTapOrder[index] == color
+    }
 }

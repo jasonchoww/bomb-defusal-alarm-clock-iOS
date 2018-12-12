@@ -11,6 +11,7 @@ import UIKit
 class FirstViewController: UIViewController {
     
     var bombAndWires = BombAndWires()
+    var patternStep = 0;
     
     @IBOutlet weak var Color1: UILabel!
     
@@ -24,9 +25,13 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var wire3: UIImageView!
     
+    @IBOutlet weak var GameWin: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        patternStep = 0;
+        GameWin.isHidden = true;
         Color1.text = bombAndWires.getWireColorTapOrder(index: 0)
         Color2.text = bombAndWires.getWireColorTapOrder(index: 1)
         Color3.text = bombAndWires.getWireColorTapOrder(index: 2)
@@ -49,16 +54,34 @@ class FirstViewController: UIViewController {
     @objc func imageTapped(tapGestureRecognizer1: UITapGestureRecognizer) {
         let tappedImage = tapGestureRecognizer1.view as! UIImageView
         tappedImage.image = nil
+        if(bombAndWires.checkIfCorrectTapped(color: "blue", index: patternStep)) {
+            patternStep = patternStep + 1
+        }
+        if(patternStep == 3) {
+            GameWin.isHidden = false;
+        }
     }
     
     @objc func imageTapped(tapGestureRecognizer2: UITapGestureRecognizer) {
         let tappedImage = tapGestureRecognizer2.view as! UIImageView
         tappedImage.image = nil
+        if(bombAndWires.checkIfCorrectTapped(color: "red", index: patternStep)) {
+            patternStep = patternStep + 1
+        }
+        if(patternStep == 3) {
+            GameWin.isHidden = false;
+        }
     }
     
     @objc func imageTapped(tapGestureRecognizer3: UITapGestureRecognizer) {
         let tappedImage = tapGestureRecognizer3.view as! UIImageView
         tappedImage.image = nil
+        if(bombAndWires.checkIfCorrectTapped(color: "green", index: patternStep)) {
+            patternStep = patternStep + 1
+        }
+        if(patternStep == 3) {
+            GameWin.isHidden = false;
+        }
     }
     
     @IBAction func ColorPatternRandomizer(_ sender: UIButton) {
@@ -66,6 +89,7 @@ class FirstViewController: UIViewController {
         Color1.text = bombAndWires.getWireColorTapOrder(index: 0)
         Color2.text = bombAndWires.getWireColorTapOrder(index: 1)
         Color3.text = bombAndWires.getWireColorTapOrder(index: 2)
+        viewDidLoad()
     }
 }
 

@@ -18,6 +18,7 @@
 		351B80CB21B8B1A8001EAFA2 /* bomb_defuse_alarm_clockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B80CA21B8B1A8001EAFA2 /* bomb_defuse_alarm_clockUITests.swift */; };
 		351B80D921B8B812001EAFA2 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B80D821B8B812001EAFA2 /* AlarmModel.swift */; };
 		351B80E021BF3337001EAFA2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351B80DF21BF3337001EAFA2 /* AVFoundation.framework */; };
+		351B80EA21C20DB7001EAFA2 /* alarm-sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 351B80E921C20DB7001EAFA2 /* alarm-sound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		351B80CC21B8B1A8001EAFA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		351B80D821B8B812001EAFA2 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		351B80DF21BF3337001EAFA2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		351B80E921C20DB7001EAFA2 /* alarm-sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "alarm-sound.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				351B80B321B8B1A8001EAFA2 /* LaunchScreen.storyboard */,
 				351B80B621B8B1A8001EAFA2 /* Info.plist */,
 				351B80D821B8B812001EAFA2 /* AlarmModel.swift */,
+				351B80E921C20DB7001EAFA2 /* alarm-sound.wav */,
 				035EA9F421BF25C5004DA026 /* BombAndWires.swift */,
 			);
 			path = "bomb-defuse-alarm-clock";
@@ -214,6 +217,11 @@
 				TargetAttributes = {
 					351B80A421B8B1A8001EAFA2 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					351B80BA21B8B1A8001EAFA2 = {
 						CreatedOnToolsVersion = 10.1;
@@ -252,6 +260,7 @@
 			files = (
 				351B80B521B8B1A8001EAFA2 /* LaunchScreen.storyboard in Resources */,
 				351B80B221B8B1A8001EAFA2 /* Assets.xcassets in Resources */,
+				351B80EA21C20DB7001EAFA2 /* alarm-sound.wav in Resources */,
 				351B80B021B8B1A8001EAFA2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

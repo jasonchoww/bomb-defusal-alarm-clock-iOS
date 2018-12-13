@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class FirstViewController: UIViewController {
     
@@ -67,6 +68,7 @@ class FirstViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         //countdownTime.text = countdownTimeString
         
+        bombSound()
     }
     
     func resetAndRandomize() {
@@ -107,6 +109,7 @@ class FirstViewController: UIViewController {
             if(patternStep == 3) {
                 GameWin.isHidden = false
                 bombDefused = true
+                stopBombSound()
             }
         } else if(bombAndWires.checkIfWrongTapped(color: "blue", index: patternStep)) {
             wrongWireCut = true
@@ -125,6 +128,7 @@ class FirstViewController: UIViewController {
             if(patternStep == 3) {
                 GameWin.isHidden = false;
                 bombDefused = true;
+                stopBombSound()
             }
         } else if(bombAndWires.checkIfWrongTapped(color: "red", index: patternStep)) {
             wrongWireCut = true
@@ -143,6 +147,7 @@ class FirstViewController: UIViewController {
             if(patternStep == 3) {
                 GameWin.isHidden = false;
                 bombDefused = true;
+                stopBombSound()
             }
         } else if(bombAndWires.checkIfWrongTapped(color: "green", index: patternStep)) {
             wrongWireCut = true

@@ -118,8 +118,8 @@ func alarmNotification(hour: String, minute: String){
     //default sound, don't use, use for testing
     //content.sound = UNNotificationSound.default
     
-    /*let sound: UNNotificationSound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: "alarm-sound.wav"))
-    content.sound = sound*/
+    let sound: UNNotificationSound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: "alarm-sound.wav"))
+    content.sound = sound
     
     var dateInfo = DateComponents()
     dateInfo.hour = hourInt
@@ -145,18 +145,35 @@ func clearNotifcations(){
     center.removeAllPendingNotificationRequests()
 }
 
-
+ var musicSound: AVAudioPlayer = AVAudioPlayer()
 
 func bombSound(){
-    var musicSound: AVAudioPlayer = AVAudioPlayer()
-    let musicFile = Bundle.main.path(forResource: "alarm-sound", ofType: ".wav")
     
     do {
-        try musicSound = AVAudioPlayer(contentsOf: URL (fileURLWithPath: musicFile!))
+        let musicFile = Bundle.main.path(forResource: "alarm-sound", ofType: "wav")
+        try musicSound = AVAudioPlayer(contentsOf: NSURL (fileURLWithPath: musicFile!) as URL)
     }
     catch {
         print(error)
     }
+    
+    musicSound.prepareToPlay()
+    musicSound.play()
+    
+    let session = AVAudioSession.sharedInstance()
+    do{
+        try session.setCategory(.playback, mode: .default)
+        try session.setActive(true)
+    
+    }
+    catch{
+        print(error)
+    }
+    
+}
+
+func stopBombSound(){
+    musicSound.stop()
 }
 
 
